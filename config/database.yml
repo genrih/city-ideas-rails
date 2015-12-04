@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: localhost
+
+development:
+  <<: *default
+  database: city_ideas_development
+
+test:
+  <<: *default
+  database: city_ideas_test
+
+staging:
+  <<: *default
+  database: city_ideas
+
+production:
+  <<: *default
+  database: city_ideas
