@@ -1,0 +1,22 @@
+.page-header
+  = link_to ideas_path, class: 'btn btn-default' do 
+    span.glyphicon.glyphicon-list-alt
+    |  Back 
+  = link_to edit_idea_path(@idea), class: 'btn btn-primary' do 
+    span.glyphicon.glyphicon-pencil
+    |  Edit 
+  h1
+    | Show idea
+dl.dl-horizontal
+  dt
+    | User:
+  dd
+    = @idea.user_id
+  dt
+    | Title:
+  dd
+    = @idea.title
+  dt
+    | Description:
+  dd
+    = @idea.description

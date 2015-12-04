@@ -1,0 +1,35 @@
+.page-header
+  = link_to new_idea_path, class: 'btn btn-primary' do 
+    span.glyphicon.glyphicon-plus
+    |  New Idea
+  h1
+    | Listing ideas
+
+.table-responsive
+  table.table.table-striped.table-bordered.table-hover
+    thead
+      tr
+        th
+          | User
+        th
+          | Title
+        th
+          | Description
+        th
+        th
+        th
+    tbody
+      - @ideas.each do | idea |
+        tr
+          td
+            = idea.user_id
+          td
+            = idea.title
+          td
+            = idea.description
+          td
+            = link_to 'Show', idea
+          td
+            = link_to 'Edit', edit_idea_path(idea) 
+          td
+            = link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } 
