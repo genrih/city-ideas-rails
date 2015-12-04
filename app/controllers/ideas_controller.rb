@@ -61,6 +61,15 @@ class IdeasController < ApplicationController
     end
   end
 
+  def like
+    if current_user.voted_for? @idea
+      current_user.likes @idea
+    else
+      current_user.dislikes @idea
+    end
+    redirect_to(@idea)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_idea
@@ -69,6 +78,6 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:user_id, :title, :description)
+      params.require(:idea).permit(:user_id, :title, :description, :id)
     end
 end

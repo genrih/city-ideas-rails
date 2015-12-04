@@ -20,3 +20,7 @@ dl.dl-horizontal
     | Description:
   dd
     = @idea.description
+  dt
+    | Like
+  dd
+    = link_to "Like", like_ideas_path(id: @idea.id)
