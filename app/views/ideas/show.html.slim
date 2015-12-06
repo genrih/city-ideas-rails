@@ -6,29 +6,16 @@
     span.glyphicon.glyphicon-pencil
     |  Edit 
   h1
-    | Show idea
-dl.dl-horizontal
-  dt
-    | Image
-  dd
-    = image_tag(@idea.image_url) if @idea.image?
-  dt
-    | User:
-  dd
-    = @idea.user
-  dt
-    | Title:
-  dd
     = @idea.title
-  dt
-    | Description:
-  dd
+.idea
+  .image
+    = image_tag(@idea.image_url) if @idea.image?
+  .description
     = @idea.description
-  dt
-    | Likes
-  dd.likes-count
-    = @idea.get_likes.size
-  dt
-    | Like
-  dd
-    = link_to "Like", like_idea_path(@idea), method: :post
+  .like
+    span class="label label-primary"
+      =
+    = link_to like_idea_path(@idea), method: :post, class: 'btn btn-success' do
+      span.badge
+        = @idea.get_likes.size
+      |  Like it

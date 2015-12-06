@@ -1,35 +1,21 @@
-.page-header
-  = link_to new_idea_path, class: 'btn btn-primary' do 
-    span.glyphicon.glyphicon-plus
-    |  New Idea
-  h1
-    | Listing ideas
+.ideas-list
+  .page-header
+    = link_to new_idea_path, class: 'btn btn-primary' do
+      span.glyphicon.glyphicon-plus
+      |  New Idea
+    h1
+      | Listing ideas
 
-.table-responsive
-  table.table.table-striped.table-bordered.table-hover
-    thead
-      tr
-        th
-          | Like
-        th
-          | Title
-        th
-          | Description
-        th
-        th
-        th
-    tbody
-      - @ideas.each do | idea |
-        tr
-          td
-            = link_to "Like", like_idea_path(idea), method: :post
-          td
-            = link_to idea.title, idea
-          td
-            = idea.description
-          td
-            = link_to 'Show', idea
-          td
-            = link_to 'Edit', edit_idea_path(idea) 
-          td
-            = link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } 
+    - @ideas.each_slice(3) do |slice|
+      .row
+        - slice.each do |idea|
+          .idea.col-sm-4
+            .title
+              = link_to idea.title, idea
+            .image
+              = link_to image_tag(idea.image.preview.url), idea
+            .description
+              = idea.description
+            .likes
+              = idea.get_likes.size
+

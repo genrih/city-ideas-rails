@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
 
   has_many :ideas
 
+  enum role: [:user, :admin]
 end

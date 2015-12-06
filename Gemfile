@@ -31,6 +31,9 @@ gem 'slim-rails'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'carrierwave'
 gem "mini_magick"
+gem 'faker'
+gem 'database_cleaner'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
