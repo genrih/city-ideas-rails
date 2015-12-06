@@ -10,7 +10,7 @@
     thead
       tr
         th
-          | User
+          | Like
         th
           | Title
         th
@@ -22,9 +22,9 @@
       - @ideas.each do | idea |
         tr
           td
-            = idea.user_id
+            = link_to "Like", like_idea_path(idea), method: :post
           td
-            = idea.title
+            = link_to idea.title, idea
           td
             = idea.description
           td

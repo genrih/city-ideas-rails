@@ -29,7 +29,8 @@ gem 'devise-bootstrap-views'
 gem 'bootstrap-generators', '~> 3.3.4'
 gem 'slim-rails'
 gem 'acts_as_votable', '~> 0.10.0'
-
+gem 'carrierwave'
+gem "mini_magick"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

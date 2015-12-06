@@ -1,20 +1,19 @@
 Rails.application.routes.draw do
-  resources :ideas
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'ideas#index'
-  resource :ideas do
-    put :like
+  resources :ideas do
+    post :like, on: :member
   end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  #   get 'products/:id/purchase' => s'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

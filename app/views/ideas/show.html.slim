@@ -9,9 +9,13 @@
     | Show idea
 dl.dl-horizontal
   dt
+    | Image
+  dd
+    = image_tag(@idea.image_url) if @idea.image?
+  dt
     | User:
   dd
-    = @idea.user_id
+    = @idea.user
   dt
     | Title:
   dd
@@ -21,6 +25,10 @@ dl.dl-horizontal
   dd
     = @idea.description
   dt
+    | Likes
+  dd.likes-count
+    = @idea.get_likes.size
+  dt
     | Like
   dd
-    = link_to "Like", like_ideas_path(id: @idea.id)
+    = link_to "Like", like_idea_path(@idea), method: :post

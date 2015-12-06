@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  before_action :set_idea, only: [:show, :edit, :update, :destroy]
+  before_action :set_idea, only: [:show, :edit, :update, :destroy, :like]
 
   # GET /ideas
   # GET /ideas.json
@@ -62,12 +62,19 @@ class IdeasController < ApplicationController
   end
 
   def like
-    if current_user.voted_for? @idea
-      current_user.likes @idea
+    if current_user.votes.up.for_type(Idea).votables.map(&:id).include?(@idea.id)
+      message = 'You have already liked idea'
     else
-      current_user.dislikes @idea
+      current_user.likes @idea
+      message = 'You have liked the idea'
     end
-    redirect_to(@idea)
+    respond_to do |format|
+      format.html { redirect_to @idea, notice: message }
+    end
+
+    # respond_to do |format|
+    #   format.js { render :show, status: :created, location: @idea }
+    # end
   end
 
   private
@@ -78,6 +85,6 @@ class IdeasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def idea_params
-      params.require(:idea).permit(:user_id, :title, :description, :id)
+      params.require(:idea).permit(:user_id, :title, :description, :id, :image)
     end
 end
