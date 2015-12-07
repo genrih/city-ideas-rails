@@ -32,9 +32,10 @@ html
             li
               a href="#about"
                 | About
+
+          ul.nav.navbar-nav.navbar-right
             li
-              a href="#contact"
-                | Contact
+              = link_to('Sign in', new_user_session_path)
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do

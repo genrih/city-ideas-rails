@@ -15,7 +15,7 @@
   .like
     span class="label label-primary"
       =
-    = link_to like_idea_path(@idea), method: :post, class: 'btn btn-success' do
+    = link_to idea_likes_path(@idea), method: :post, class: 'btn btn-success' do
       span.badge
         = @idea.get_likes.size
       |  Like it

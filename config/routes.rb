@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'ideas#index'
   resources :ideas do
-    post :like, on: :member
+    resources :likes, only: [:create, :index]
   end
 
   # Example of regular route:

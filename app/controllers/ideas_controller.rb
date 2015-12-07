@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  before_action :set_idea, only: [:show, :edit, :update, :destroy, :like]
+  before_action :set_idea, only: [:show, :edit, :update, :destroy]
 
   # GET /ideas
   # GET /ideas.json
@@ -59,22 +59,6 @@ class IdeasController < ApplicationController
       format.html { redirect_to ideas_url, notice: 'Idea was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def like
-    if current_user.votes.up.for_type(Idea).votables.map(&:id).include?(@idea.id)
-      message = 'You have already liked idea'
-    else
-      current_user.likes @idea
-      message = 'You have liked the idea'
-    end
-    respond_to do |format|
-      format.html { redirect_to @idea, notice: message }
-    end
-
-    # respond_to do |format|
-    #   format.js { render :show, status: :created, location: @idea }
-    # end
   end
 
   private
