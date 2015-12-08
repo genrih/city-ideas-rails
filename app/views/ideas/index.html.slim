@@ -17,5 +17,7 @@
             .description
               = idea.description
             .likes
-              = idea.get_likes.size
+              span.badge
+                = idea.get_likes.size
+                |  Likes
   = paginate @ideas

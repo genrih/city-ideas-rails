@@ -41,6 +41,7 @@ GEM
     autoprefixer-rails (6.1.2)
       execjs
       json
+    babosa (1.0.2)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -86,6 +87,8 @@ GEM
       i18n (~> 0.5)
     font-awesome-rails (4.5.0.0)
       railties (>= 3.2, < 5.0)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     haml (4.0.7)
@@ -225,6 +228,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_votable (~> 0.10.0)
+  babosa
   bootstrap-generators (~> 3.3.4)
   bootstrap-sass (~> 3.3.6)
   byebug
@@ -236,6 +240,7 @@ DEPENDENCIES
   devise-bootstrap-views
   dotenv-rails
   faker
+  friendly_id (~> 5.1.0)
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
