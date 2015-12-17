@@ -5,6 +5,7 @@ class Idea < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   belongs_to :user
+  has_and_belongs_to_many :categories
 
   def normalize_friendly_id(title)
     title.to_slug.normalize! :transliterations => [:russian, :latin]

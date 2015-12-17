@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208164257) do
+ActiveRecord::Schema.define(version: 20151210164137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "slug"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "categories_ideas", force: :cascade do |t|
+    t.integer "idea_id"
+    t.integer "category_id"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -37,8 +50,10 @@ ActiveRecord::Schema.define(version: 20151208164257) do
     t.datetime "updated_at",  null: false
     t.string   "image"
     t.string   "slug"
+    t.integer  "category_id"
   end
 
+  add_index "ideas", ["category_id"], name: "index_ideas_on_category_id", using: :btree
   add_index "ideas", ["slug"], name: "index_ideas_on_slug", unique: true, using: :btree
 
   create_table "pages", force: :cascade do |t|
@@ -87,4 +102,5 @@ ActiveRecord::Schema.define(version: 20151208164257) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
+  add_foreign_key "ideas", "categories"
 end

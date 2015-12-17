@@ -22,6 +22,6 @@ class LikesController < ApplicationController
   private
 
   def set_idea
-    @idea = Idea.find(params[:idea_id])
+    @idea = Idea.friendly.find(params[:idea_id])
   end
 end

@@ -1,0 +1,5 @@
+.menu.categories
+  ul.nav.nav-pills
+    -@categories.each do |cat|
+      li(role="presentation" class='active')
+        = link_to cat.name, category_ideas_path(cat)
