@@ -4,7 +4,13 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all.page(params[:page]).per(params[:per_page])
+    category_id = Category.find_by_slug(params[:category_id])
+
+    @ideas = Idea.all
+    @ideas = @ideas.joins(:categories).where(categories: { id: category_id}).uniq if category_id
+    @ideas = @ideas.page(params[:page]).per(params[:per_page])
+
+    @categories = Category.all
   end
 
   # GET /ideas/1

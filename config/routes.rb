@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :ideas do
     resources :likes, only: [:create, :index]
   end
+  resources :categories, only: :show do
+    resources :ideas
+  end
 
   root 'ideas#index'
 end
