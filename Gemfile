@@ -39,6 +39,7 @@ gem 'kaminari'
 gem 'sanitize'
 gem 'friendly_id', '~> 5.1.0'
 gem 'babosa'
+gem 'aws-sdk'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
