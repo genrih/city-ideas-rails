@@ -6,7 +6,7 @@ class IdeasController < ApplicationController
   def index
     category_id = Category.find_by_slug(params[:category_id])
 
-    @ideas = Idea.all
+    @ideas = Idea.all.order(cached_votes_total: :desc)
     @ideas = @ideas.joins(:categories).where(categories: { id: category_id}).uniq if category_id
     @ideas = @ideas.page(params[:page]).per(params[:per_page])
 
