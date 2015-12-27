@@ -1,0 +1,13 @@
+.page-header
+  = link_to edit_user_path(@user), class: 'btn btn-primary' do 
+    span.glyphicon.glyphicon-pencil
+    |  Edit 
+  h1
+    | Show user
+dl.dl-horizontal
+  .info
+    label First name &nbsp;
+    = @user.first_name
+  .info
+    label Last name &nbsp;
+    = @user.last_name

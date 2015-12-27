@@ -1,0 +1,13 @@
+.profile
+  .page-body
+    ul.nav.nav-tabs
+      li role="presentation" class="active"
+        = link_to 'Profile', profile_path
+      li role="presentation"
+        = link_to 'Your ideas', '#'
+
+    = simple_form_for @user do |f|
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :email
+      = f.button :submit

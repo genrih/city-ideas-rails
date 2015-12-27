@@ -34,10 +34,13 @@ html
                 | About
 
           ul.nav.navbar-nav.navbar-right
-            li
-              - if user_signed_in?
+            - if user_signed_in?
+              li
+                = link_to('Profile', profile_path)
+              li
                 = link_to('Sign out', destroy_user_session_path, method: :delete)
-              - else
+            - else
+              li
                 = link_to('Sign in', new_user_session_path)
     .container
       - flash.each do |name, msg|

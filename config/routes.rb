@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
+  resources :users, only: [:show, :update, :edit] do
+    resources :ideas, only: :index
+  end
+  get 'profile', to: 'profile#show'
 
   resources :pages, only: :show
   resources :ideas do
